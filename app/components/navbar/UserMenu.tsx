@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Avatar from "../Avatar";
-import MenuItem from "./MenuItem";
+import Avatar from "@/app/components/Avatar";
+import MenuItem from "@/app/components/navbar/MenuItem";
 import { AiOutlineMenu } from "react-icons/ai";
 
 const UserMenu = () => {
