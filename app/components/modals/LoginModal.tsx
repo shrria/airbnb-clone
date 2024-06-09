@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
@@ -101,7 +101,7 @@ const LoginModal = () => {
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => { }}
+                onClick={() => signIn("github")}
             />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center items-center gap-2">
