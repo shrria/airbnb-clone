@@ -13,6 +13,7 @@ import Heading from "@/app/components/Heading";
 import { categories } from "@/app/components/navbar/Categories";
 import CategoryInput from "@/app/components/input/CategoryInput";
 import CountrySelect from "@/app/components/input/CountrySelect";
+import Counter from "@/app/components/input/Counter";
 
 
 enum STEPS {
@@ -52,6 +53,9 @@ const RentModal = () => {
 
     const category = watch("category");
     const location = watch("location");
+    const numOfGuests = watch("numOfGuests");
+    const numOfRooms = watch("numOfRooms");
+    const numOfBathrooms = watch("numOfBathrooms");
 
     const Map = useMemo(() => dynamic(() => import('@/app/components/Map'), {
         ssr: false
@@ -129,6 +133,38 @@ const RentModal = () => {
                 <Map
                     center={location?.latlng}
                 />
+            </div>
+        );
+    }
+
+    if (step === STEPS.INFO) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="Share some basics about your place"
+                    subtitle="What amenities do you have?"
+                />
+                <Counter
+                    title="Guests"
+                    subtitle="How many guests do you allow?"
+                    value={watch('numOfGuests')}
+                    onChange={(value) => setCustomValue('numOfGuests', value)}
+                />
+                <hr />
+                <Counter
+                    title="Rooms"
+                    subtitle="How many rooms do you have?"
+                    value={watch('numOfRooms')}
+                    onChange={(value) => setCustomValue('numOfRooms', value)}
+                />
+                <hr />
+                <Counter
+                    title="Bathrooms"
+                    subtitle="How many bathrooms do you have?"
+                    value={watch('numOfBathrooms')}
+                    onChange={(value) => setCustomValue('numOfBathrooms', value)}
+                />
+
             </div>
         );
     }
