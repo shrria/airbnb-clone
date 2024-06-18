@@ -11,16 +11,17 @@ import {
 } from "react-hook-form";
 import toast from "react-hot-toast";
 
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import Heading from "@/app/components/Heading";
 import Button from "@/app/components/Button";
 import Input from "@/app/components/input/Input";
 import Modal from "@/app/components/modals/Modal";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { signIn } from "next-auth/react";
-
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -85,6 +86,11 @@ const RegisterModal = () => {
         </div>
     )
 
+    const toggle = useCallback(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+    }, [loginModal, registerModal])
+
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
@@ -107,7 +113,7 @@ const RegisterModal = () => {
                     </div>
                     <div
                         className="text-neutral-800 cursor-pointer hover:underline"
-                        onClick={registerModal.onClose}
+                        onClick={toggle}
                     >
                         Log in
                     </div>
