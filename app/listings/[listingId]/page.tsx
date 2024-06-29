@@ -1,5 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListingById from "@/app/actions/getListingById";
+import getReservations from "@/app/actions/getReservations";
+
 import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "@/app/listings/[listingId]/ListingClient";
 
@@ -12,6 +14,7 @@ const ListingPage = async (
 ) => {
     const listing = await getListingById(params);
     const currentUser = await getCurrentUser();
+    const reservations = await getReservations({ listingId: params.listingId });
 
     if (!listing) {
         return <EmptyState />;
@@ -21,6 +24,7 @@ const ListingPage = async (
         <div>
             <ListingClient
                 listing={listing}
+                reservations={reservations}
                 currentUser={currentUser}
             />
         </div>
