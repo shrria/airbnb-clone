@@ -1,0 +1,1 @@
+    onChangeDateRange: (value: Range) => void;
