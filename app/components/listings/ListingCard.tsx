@@ -15,7 +15,7 @@ interface ListingCardProps {
     data: Listing;
     reservation?: Reservation;
     onAction?: (id: string) => void;
-    disabled: boolean;
+    disabled?: boolean;
     actionLabel?: string;
     actionId?: string;
     currentUser?: User | null;
