@@ -98,6 +98,7 @@ const RentModal = () => {
                 toast.success("Listing created successfully!");
                 reset();
                 setStep(STEPS.CATEGORY);
+                rentModal.onClose();
                 router.refresh();
             })
             .catch(() => {
