@@ -36,27 +36,3 @@ export async function POST(request: Request) {
 
   return NextResponse.json(listingAndReservation);
 }
-
-export async function DELETE(request: Request) {
-  const currentUser = await getCurrentUser();
-
-  if (!currentUser) {
-    return NextResponse.error();
-  }
-
-  const body = await request.json();
-
-  const { reservationId } = body;
-
-  if (!reservationId) {
-    return NextResponse.error();
-  }
-
-  const reservation = await prisma.reservation.delete({
-    where: {
-      id: reservationId,
-    },
-  });
-
-  return NextResponse.json(reservation);
-}
