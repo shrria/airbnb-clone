@@ -96,9 +96,9 @@ const RentModal = () => {
         axios.post('/api/listings', data)
             .then(() => {
                 toast.success("Listing created successfully!");
-                router.refresh();
                 reset();
                 setStep(STEPS.CATEGORY);
+                router.refresh();
             })
             .catch(() => {
                 toast.error("Something went wrong.");

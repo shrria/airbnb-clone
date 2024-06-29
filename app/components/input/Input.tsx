@@ -36,7 +36,8 @@ const Input: React.FC<InputProps> = ({
                 className={`
                     peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none
                     transition disabled:opacity-70 disabled:cursor-not-allowed
-                    ${formatPrice ? 'pl-9' : 'pl-4'} [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none
+                    ${formatPrice ? 'pl-9' : 'pl-4'} 
+                    ${type === 'number' ? '[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' : ''}
                     ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
                     ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
                 `}
